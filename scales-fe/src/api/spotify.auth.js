@@ -8,6 +8,10 @@ const getToken = (code) => {
     return axios.post('http://localhost:4000/api/spotify/get_token', {code});
 }
 
+const getUserSpotifyProfile = () => {
+    return axios.post('http://localhost:4000/api/spotify/get_user_spotify_profile');
+}
+
 export {
     requestAuth,
     getToken,
