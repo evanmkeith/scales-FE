@@ -1,8 +1,11 @@
 import * as spotifyAuthService from '../../api/spotify.auth';
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+
 
 
 export default function Login() {
+
+
     const requestAuth = async() => {
         await spotifyAuthService.requestAuth().then((res) => {
           window.location.href = res.data.authUrl;
@@ -14,6 +17,7 @@ export default function Login() {
     
         await spotifyAuthService.getToken(authCode).then((res) => {
           console.log("authCode received", res);
+
         })
       }
     

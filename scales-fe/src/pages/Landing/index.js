@@ -1,5 +1,3 @@
-import * as spotifyAuthService from '../../api/spotify.auth';
-import React, { useEffect,  createContext, useState } from 'react';
 import Login from '../../components/Login'
 
 function App() {
