@@ -1,5 +1,5 @@
 import * as spotifyAuthService from '../../api/spotify.auth';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -15,20 +15,28 @@ export default function Login(props) {
     
       const getToken = async(authCode) => {
         console.log("getting token")
-       
         await spotifyAuthService.getToken(authCode).then((res) => {
             console.log("user id", res.data.token);
             props.setUser({"userId": res.data.token});
+            localStorage.setItem("scalesLoggedInBefore", true);
+            localStorage.setItem("autoLog", false);
         })
         navigate('/profile');
       }
     
       useEffect(() => {
-        if(window.location.href.includes('code')){
-            const authCode = window.location.href.split('=')[1];
-            getToken(authCode);
-        };
-      }, [])
+            const autoLog = localStorage.getItem("autoLog");
+
+            if(autoLog === 'false') {
+                localStorage.setItem("autoLog", true);
+                console.log("here");
+                requestAuth()
+            }
+            if(window.location.href.includes('code')){
+                const authCode = window.location.href.split('=')[1];
+                getToken(authCode);
+            };
+      }, []);
     
       return (
         <div id='login'>

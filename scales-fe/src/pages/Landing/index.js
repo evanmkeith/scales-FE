@@ -3,11 +3,10 @@ import { UserContext } from '../../UserContext';
 import React, { useContext } from 'react';
 
 function Landing() {
-  const { user, setUser } = useContext(UserContext);
 
   return (
     <div>
-       <Login user={user} setUser={setUser}/>
+       <p>Landing</p>
     </div>
   );
 }

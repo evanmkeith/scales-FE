@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom'; 
-import React from 'react'; 
+import { NavLink, useNavigate } from 'react-router-dom'; 
+import React, { useEffect } from 'react';
+import Login from '../Login';
 
 export default function NavBar(props) {
     const user = props.user; 
-    console.log("navBar",user);
+    const navigate = useNavigate();
+
 
     if(user){
         return(
@@ -45,9 +47,8 @@ export default function NavBar(props) {
     } else {
         return(
             <>
-                <h4>No user</h4>
+                <Login user={props.user} setUser={props.setUser}/>
             </>
         )
-    }
-    
-}
+    };
+};
