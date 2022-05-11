@@ -6,6 +6,10 @@ export default function NavBar(props) {
     const user = props.user; 
     const navigate = useNavigate();
 
+    const handleLogout = () => {
+        props.setUser(null);
+        localStorage.setItem("autoLog", true)
+    }
 
     if(user){
         return(
@@ -40,6 +44,12 @@ export default function NavBar(props) {
                         to='/artist'
                     >
                         Artist
+                    </NavLink>
+                    <NavLink 
+                        to="/"
+                        onClick={handleLogout}
+                    >                   
+                    Logout    
                     </NavLink>
                 </div>
             </>

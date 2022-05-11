@@ -15,7 +15,6 @@ function App() {
     const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
     console.log("user",user);
 
-
     return (
         <>
             <Navbar user={user} setUser={setUser}/>
