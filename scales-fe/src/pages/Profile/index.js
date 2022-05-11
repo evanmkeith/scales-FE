@@ -1,8 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import * as spotifyAuthService from '../../api/spotify.auth';
+import { UserContext } from '../../UserContext';
 
 export default function Profile() {
-    
+    const { user, setUser } = useContext(UserContext);
+
+    const createSpotifyPlaylist = async(token) => {
+        await spotifyAuthService.createSpotifyPlaylist(user.userId).then(
+            (res) => {
+                console.log("Sent ", user.userId);
+                console.log(res);
+            }
+        )
+    } 
+
+    useEffect(() => {
+        createSpotifyPlaylist();
+  }, []);
 
     return (
         <>
