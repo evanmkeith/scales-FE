@@ -1,30 +1,32 @@
 import * as spotifyAuthService from '../../api/spotify.auth';
 import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
-
-export default function Login() {
-
+export default function Login(props) {
+    const navigate = useNavigate();
 
     const requestAuth = async() => {
         await spotifyAuthService.requestAuth().then((res) => {
-          window.location.href = res.data.authUrl;
+            console.log('response: ',res);
+            window.location.href = res.data.authUrl;
         })
       }
     
       const getToken = async(authCode) => {
-        window.history.pushState("", "", 'http://localhost:3000/profile');
-    
+        console.log("getting token")
+       
         await spotifyAuthService.getToken(authCode).then((res) => {
-          console.log("authCode received", res);
-
+            console.log("user id", res.data.token);
+            props.setUser({"userId": res.data.token});
         })
+        navigate('/profile');
       }
     
       useEffect(() => {
         if(window.location.href.includes('code')){
-          const authCode = window.location.href.split('=')[1];
-          getToken(authCode);
+            const authCode = window.location.href.split('=')[1];
+            getToken(authCode);
         };
       }, [])
     

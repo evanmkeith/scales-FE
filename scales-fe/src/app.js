@@ -18,9 +18,7 @@ function App() {
 
     return (
         <>
-            <div>
-                <Navbar user={user}/> 
-            </div>
+            <Navbar user={user}/>
             <UserContext.Provider value={providerValue} >
                 <Routes>
                     <Route
