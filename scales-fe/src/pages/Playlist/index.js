@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as spotifyAuthService from '../../api/spotify.auth';
 import { UserContext } from '../../UserContext';
 import Player from '../../components/Player';
 
 export default function Playlist() {
     const { user, setUser } = useContext(UserContext);
-    let accessToken;
+    const [ aToken, setAToken ] = useState()
     let tracks = [];
 
     const createSpotifyPlaylist = async() => {
@@ -29,21 +29,26 @@ export default function Playlist() {
                         albumUrl: track.track.album.images[2].url
                     });
                 });
-                accessToken = res.data.accessToken;
+                setAToken(res.data.accessToken);
                 console.log("tracks: ", tracks); 
-                console.log("accessToken", accessToken);
+                console.log("accessToken", aToken);
             }
         )
     };
+
+    useEffect(() => {
+        createSpotifyPlaylist();
+        getPlaylist();
+    }, []);
 
     return (
         <>
             <h1>Playlist</h1>
             <button onClick={createSpotifyPlaylist}>Create Playlist</button>
             <button onClick={getPlaylist}>Get Playlist</button>
-            
+
             <div>
-                <Player accessToken={accessToken} /> 
+                <Player accessToken={aToken} /> 
             </div>
         </>
     )
