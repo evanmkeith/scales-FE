@@ -34,7 +34,7 @@ export default function Login(props) {
             requestAuth()
         }
         if(window.location.href.includes('code')){
-            const authCode = window.location.href.split('=')[1];
+            const authCode = new URLSearchParams(window.location.search).get('code');
             getToken(authCode);
         };
     }, []);

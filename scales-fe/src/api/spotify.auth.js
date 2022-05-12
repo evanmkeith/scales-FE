@@ -12,9 +12,15 @@ const createSpotifyPlaylist = (token) => {
     return axios.post('http://localhost:4000/api/spotify/create_play_list', {token});
 }
 
+const getPlaylist = (token) => {
+    return axios.post('http://localhost:4000/api/spotify/get_play_list', {token});
+}
+
 
 export {
     requestAuth,
     getToken,
     createSpotifyPlaylist,
+    getPlaylist,
+
 }
