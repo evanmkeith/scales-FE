@@ -14,9 +14,10 @@ export default function Playlist() {
     };
 
     const removeTrack = async(track) => {
-        await spotifyAuthService.removeTrack(track).the(
+        await spotifyAuthService.removeTrack(track, user).the(
             (res) => {
                 console.log(res)
+                getPlaylist();
             }
         ).catch((error) => {
             console.log(error);
@@ -47,8 +48,12 @@ export default function Playlist() {
     };
 
     useEffect(() => {
-        createSpotifyPlaylist();
-        getPlaylist();
+        if(!user.playlistId){
+            createSpotifyPlaylist();
+            getPlaylist();
+        } else {
+            getPlaylist();
+        }
     }, []);
 
     return (
