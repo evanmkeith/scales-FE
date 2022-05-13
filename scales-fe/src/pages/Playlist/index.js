@@ -2,38 +2,48 @@ import React, { useContext, useEffect, useState } from 'react';
 import * as spotifyAuthService from '../../api/spotify.auth';
 import { UserContext } from '../../UserContext';
 import Player from '../../components/Player';
+import PlaylistTrack from '../../components/PlaylistTrack';
 
 export default function Playlist() {
     const { user, setUser } = useContext(UserContext);
-    const [ aToken, setAToken ] = useState()
-    let tracks = [];
+    const [ tracks, setTracks ] = useState([]);
+    const [ trackToPlay, setTrackToPlay ] = useState()
+
+    const playTrack = (track) => {
+        setTrackToPlay(track);
+    };
+
+    const removeTrack = async(track) => {
+        await spotifyAuthService.removeTrack(track).the(
+            (res) => {
+                console.log(res)
+            }
+        ).catch((error) => {
+            console.log(error);
+        })
+    }
 
     const createSpotifyPlaylist = async() => {
-        await spotifyAuthService.createSpotifyPlaylist(user.userId).then(
+        await spotifyAuthService.createSpotifyPlaylist(user).then(
             (res) => {
                 console.log(res);
             }
-        )
+        ).catch((error) => {
+            console.log(error);
+        })
     };
 
     const getPlaylist = async() => {
-        console.log("get playlist ", user.userId)
-        await spotifyAuthService.getPlaylist(user.userId).then(
+        await spotifyAuthService.getPlaylist(user).then(
             (res) => {
-                console.log(res);
-                res.data.tracks.map(track => {
-                    tracks.push({
-                        artist: track.track.artists[0].name,
-                        title: track.track.name, 
-                        uri: track.track.uri, 
-                        albumUrl: track.track.album.images[2].url
-                    });
-                });
-                setAToken(res.data.accessToken);
-                console.log("tracks: ", tracks); 
-                console.log("accessToken", aToken);
+                const tracks = res.data.newTracks;
+                console.log("tracks: ", tracks);
+                setTracks(tracks);
+                return tracks
             }
-        )
+        ).catch((error) => {
+            console.log(error);
+        })
     };
 
     useEffect(() => {
@@ -42,14 +52,23 @@ export default function Playlist() {
     }, []);
 
     return (
-        <>
+        <> 
             <h1>Playlist</h1>
-            <button onClick={createSpotifyPlaylist}>Create Playlist</button>
-            <button onClick={getPlaylist}>Get Playlist</button>
+
+            {tracks.map((track) => {
+                return (
+                    <PlaylistTrack 
+                        track={track}
+                        key={track.uri}
+                        playTrack={playTrack}
+                        removeTrack={removeTrack}
+                    />
+                )
+            })}
 
             <div>
-                <Player accessToken={aToken} /> 
+                <Player accessToken={user.accessToken} trackUri={trackToPlay?.uri}/> 
             </div>
         </>
-    )
-}
+    );
+};

@@ -13,7 +13,6 @@ import Navbar from './components/Navbar';
 function App() {
     const [ user, setUser ] = useState();
     const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
-    console.log("user",user);
 
     return (
         <>

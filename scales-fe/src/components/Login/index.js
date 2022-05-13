@@ -17,8 +17,8 @@ export default function Login(props) {
     const getToken = async(authCode) => {
         console.log("getting token")
         await spotifyAuthService.getToken(authCode).then((res) => {
-            console.log("user id", res.data.token);
-            props.setUser({"userId": res.data.token});
+            console.log("user id", res.data);
+            props.setUser(res.data.token);
             localStorage.setItem("scalesLoggedInBefore", true);
             localStorage.setItem("autoLog", false);
             if(window.location.href !== 'http://localhost:3000/profile'){
@@ -30,7 +30,6 @@ export default function Login(props) {
     useEffect(() => {
         if(localStorage.getItem("autoLog") === 'false') {
             localStorage.setItem("autoLog", true);
-            console.log("here");
             requestAuth()
         }
         if(window.location.href.includes('code')){
