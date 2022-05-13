@@ -20,11 +20,20 @@ const removeTrack = (track, user) => {
     return axios.post('http://localhost:4000/api/spotify/remove_track', {track, user});
 }
 
+const getSearch = (accessToken, search) => {
+    return axios.post('http://localhost:4000/api/spotify/search', {accessToken, search});
+}
+
+const addTrack = (track, user) => {
+    return axios.post('http://localhost:4000/api/spotify/add_track', {track, user})
+}
+
 export {
     requestAuth,
     getToken,
     createSpotifyPlaylist,
     getPlaylist,
     removeTrack,
-
+    getSearch, 
+    addTrack
 }

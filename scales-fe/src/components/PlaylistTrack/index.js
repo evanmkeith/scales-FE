@@ -13,7 +13,6 @@ export default function PlaylistTrack({ track, playTrack, removeTrack }) {
     return (
         <>
         <div
-            style={ {cursor: "pointer"} }
             onClick={handlePlay}
         > 
             <img src={track.albumUrl} /> 
