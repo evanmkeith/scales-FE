@@ -14,6 +14,9 @@ export default function Playlist() {
     };
 
     const removeTrack = async(track) => {
+        let removed = tracks.splice(tracks.indexOf(track), 1);
+        console.log(tracks);
+
         await spotifyAuthService.removeTrack(track, user).the(
             (res) => {
                 console.log(res)
@@ -54,7 +57,7 @@ export default function Playlist() {
         } else {
             getPlaylist();
         }
-    }, []);
+    }, [tracks]);
 
     return (
         <> 
