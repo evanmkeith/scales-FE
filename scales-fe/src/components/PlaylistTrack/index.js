@@ -20,12 +20,10 @@ export default function PlaylistTrack({ track, playTrack, removeTrack }) {
                 <div>{track.title}</div>
                 <div>{track.artist}</div>
             </div>
-
         </div>
         <div onClick={remove}> 
             Remove
         </div>
         </>
     )
-
 };
