@@ -21,7 +21,6 @@ export default function Search() {
     console.log("albums: ",albums);
 
     const viewAlbum = (album) => {
-        console.log("Viewing: ", album);
         navigate('/listen', {state: {album}});
     }
 

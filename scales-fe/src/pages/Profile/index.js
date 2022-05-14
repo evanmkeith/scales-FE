@@ -3,21 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import * as userService from '../../api/user.service';
 import { UserContext } from '../../UserContext';
 import RemoveArtist from '../../components/RemoveArtist';
+import GetTourDates from '../../components/GetTourDates';
 
 export default function Profile() {
     const { user, setUser } = useContext(UserContext);
-    const [ userProfile, setUserProfile ] = useState({});
+    const [ userProfile, setUserProfile ] = useState({
+        artists: [], 
+        img: "", 
+        name: "",
+    });
     const [ edit, setEdit ] = useState(false);
     const [ image, setImage ] = useState(); 
     const [ name, setName ] = useState();
     const navigate = useNavigate();
 
-    console.log(userProfile.artists);
-
     const getUser = async() => {
         const id = user.userId;
         await userService.getUserInfo(id).then((res) => {
-            console.log(res.data.user)
             setUserProfile(res.data.user);
         })
     }
@@ -43,7 +45,6 @@ export default function Profile() {
         e.preventDefault();
         const id = user.userId;
         await userService.destroyProfile(id).then((res) => {
-            console.log(res);
             setUser(undefined);
             navigate('/')
         })
@@ -51,11 +52,14 @@ export default function Profile() {
 
     const removeArtist = async(id, artistId, idx) => {
         await userService.removeArtist(id, artistId).then((res) => {
-            console.log(res);
-            const removedArtist = userProfile.artists.splice(idx, 1);
+            getUser();
         }).catch((err) => {
             console.log(err);
         });
+    }
+
+    const getTourDates = (keyWords) => {
+        navigate('/touring_info', {state: {keyWords}});
     }
 
     useEffect(() => {
@@ -72,8 +76,17 @@ export default function Profile() {
                 <div>
                     <p>Artists I want to see live</p>
                         <ul>
-                            {!userProfile.artists ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist, idx) => {
-                                return (<li key={artist._id}>{artist.artist}<span><RemoveArtist artistId={artist._id} id={user.userId} idx={idx} removeArtist={removeArtist}/></span></li>)
+                            { userProfile.artists.length < 1 ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist, idx) => {
+                                return (
+                            <li key={artist._id}>
+                                {artist.artist}
+                                <span>
+                                    <RemoveArtist artistId={artist._id} id={user.userId} idx={idx} removeArtist={removeArtist}/>
+                                </span>
+                                <span>
+                                    <GetTourDates keyWords={artist.artist} getTourDates={getTourDates} />
+                                </span>
+                            </li>)
                             }) }
                         </ul>
                     </div>
