@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import * as spotifyAuthService from '../../api/spotify.auth';
 import SearchResults from '../../components/SearchResult';
-
-
 
 export default function Search() {
     const { user, setUser } = useContext(UserContext);
     const [ search, setSearch ] = useState();
     const [ albums, setAlbums ] = useState([]);
+    const navigate = useNavigate();
 
     const handleSearchSubmit = async(e) => {
         e.preventDefault();
@@ -21,7 +21,8 @@ export default function Search() {
     console.log("albums: ",albums);
 
     const viewAlbum = (album) => {
-        console.log("Viewing: ", album)
+        console.log("Viewing: ", album);
+        navigate('/listen', {state: {album}});
     }
 
     return (
