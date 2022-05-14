@@ -3,7 +3,6 @@ import { useState, useMemo } from 'react';
 import React, { UserContext } from './UserContext';
 import Landing from './pages/Landing';
 import Profile from './pages/Profile'; 
-import Artist from './pages/Artist'; 
 import Listen from './pages/Listen'; 
 import Playlist from './pages/Playlist'; 
 import Search from './pages/Search'; 
@@ -26,10 +25,6 @@ function App() {
                     <Route
                         path="/profile"
                         element={<Profile />}
-                    ></Route>
-                    <Route
-                        path="/artist"
-                        element={<Artist />}
                     ></Route>
                     <Route
                         path="/listen"
