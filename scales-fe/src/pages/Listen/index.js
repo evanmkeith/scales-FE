@@ -17,15 +17,13 @@ export default function Listen() {
     };
 
     const addTrack = async(track) => {
-        return "hello"
-        // await spotifyAuthService.removeTrack(track, user).then(
-        //     (res) => {
-        //         console.log(res)
-        //         getPlaylist();
-        //     }
-        // ).catch((error) => {
-        //     console.log(error);
-        // })
+        await spotifyAuthService.addTrack(track, user).then(
+            (res) => {
+                console.log(res)
+            }
+        ).catch((error) => {
+            console.log(error);
+        })
     }
 
     const getTracks = async() => {
