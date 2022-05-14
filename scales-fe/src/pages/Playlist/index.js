@@ -16,7 +16,7 @@ export default function Playlist() {
     const removeTrack = async(track) => {
         let removed = tracks.splice(tracks.indexOf(track), 1);
 
-        await spotifyAuthService.removeTrack(track, user).the(
+        await spotifyAuthService.removeTrack(track, user).then(
             (res) => {
                 console.log(res)
                 getPlaylist();

@@ -28,6 +28,10 @@ const addTrack = (track, user) => {
     return axios.post('http://localhost:4000/api/spotify/add_track', {track, user})
 }
 
+const getTracks = (albumId, accessToken) => {
+    return axios.post('http://localhost:4000/api/spotify/get_album_tracks', {albumId, accessToken})
+}
+
 export {
     requestAuth,
     getToken,
@@ -35,5 +39,6 @@ export {
     getPlaylist,
     removeTrack,
     getSearch, 
-    addTrack
+    addTrack, 
+    getTracks
 }
