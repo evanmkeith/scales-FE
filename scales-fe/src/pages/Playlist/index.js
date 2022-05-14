@@ -3,6 +3,7 @@ import * as spotifyAuthService from '../../api/spotify.auth';
 import { UserContext } from '../../UserContext';
 import Player from '../../components/Player';
 import PlaylistTrack from '../../components/PlaylistTrack';
+import AddArtist from '../../components/AddArtist';
 
 export default function Playlist() {
     const { user, setUser } = useContext(UserContext);
@@ -64,12 +65,15 @@ export default function Playlist() {
 
             {tracks.map((track) => {
                 return (
-                    <PlaylistTrack 
-                        track={track}
-                        key={track.uri}
-                        playTrack={playTrack}
-                        removeTrack={removeTrack}
-                    />
+                    <div>
+                        <PlaylistTrack 
+                            track={track}
+                            key={track.uri}
+                            playTrack={playTrack}
+                            removeTrack={removeTrack}
+                        />
+                        <AddArtist artist={track.artist} id={user.userId}/>
+                    </div>
                 )
             })}
 

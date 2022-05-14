@@ -11,6 +11,8 @@ export default function Profile() {
     const [ name, setName ] = useState();
     const navigate = useNavigate();
 
+    console.log(userProfile.artists);
+
     const getUser = async() => {
         const id = user.userId;
         await userService.getUserInfo(id).then((res) => {
@@ -57,8 +59,14 @@ export default function Profile() {
                     <img src={userProfile.img} />
                 </div> 
                 <p>{userProfile.name}</p>
-                <p>Artists I want to see live</p>
-                <p>{userProfile.artists}</p>
+                <div>
+                    <p>Artists I want to see live</p>
+                        <ul>
+                            {!userProfile.artists ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist) => {
+                                return (<li key={artist._id}>{artist.artist}</li>)
+                            }) }
+                        </ul>
+                    </div>
                 <button onClick={editProfile}>Edit</button>
             </> 
         )
