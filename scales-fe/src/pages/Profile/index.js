@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as userService from '../../api/user.service';
 import { UserContext } from '../../UserContext';
+import RemoveArtist from '../../components/RemoveArtist';
 
 export default function Profile() {
     const { user, setUser } = useContext(UserContext);
@@ -48,6 +49,15 @@ export default function Profile() {
         })
     }
 
+    const removeArtist = async(id, artistId, idx) => {
+        await userService.removeArtist(id, artistId).then((res) => {
+            console.log(res);
+            const removedArtist = userProfile.artists.splice(idx, 1);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
     useEffect(() => {
         getUser()
     }, []);
@@ -62,8 +72,8 @@ export default function Profile() {
                 <div>
                     <p>Artists I want to see live</p>
                         <ul>
-                            {!userProfile.artists ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist) => {
-                                return (<li key={artist._id}>{artist.artist}</li>)
+                            {!userProfile.artists ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist, idx) => {
+                                return (<li key={artist._id}>{artist.artist}<span><RemoveArtist artistId={artist._id} id={user.userId} idx={idx} removeArtist={removeArtist}/></span></li>)
                             }) }
                         </ul>
                     </div>
