@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Login from '../Login';
 
 export default function NavBar(props) {
+    console.log(props.user);
     const user = props.user; 
     const navigate = useNavigate();
 

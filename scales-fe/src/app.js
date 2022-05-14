@@ -23,6 +23,10 @@ function App() {
                         element={<Landing />}
                     ></Route>
                     <Route
+                        path="/landing"
+                        element={<Landing />}
+                    ></Route>
+                    <Route
                         path="/profile"
                         element={<Profile />}
                     ></Route>

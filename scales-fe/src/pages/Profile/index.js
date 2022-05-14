@@ -36,6 +36,16 @@ export default function Profile() {
         })
     }
 
+    const destroy = async(e) => {
+        e.preventDefault();
+        const id = user.userId;
+        await userService.destroyProfile(id).then((res) => {
+            console.log(res);
+            setUser(undefined);
+            navigate('/')
+        })
+    }
+
     useEffect(() => {
         getUser()
     }, []);
@@ -66,6 +76,7 @@ export default function Profile() {
                     </label>
                     <button onClick={updateProfile}>Submit</button>
                 </form>
+                <button onClick={destroy}>Destroy</button>
             </> 
         )
     }
