@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from 'react';
 import * as spotifyAuthService from '../../api/spotify.auth';
 import { UserContext } from '../../UserContext';
 import AlbumTrack from '../../components/AlbumTrack';
+import AddArtist from '../../components/AddArtist';
 
 export default function Listen() {
     const location = useLocation();
@@ -48,6 +49,7 @@ export default function Listen() {
                     <div>{album.name}</div>
                     <div>{album.artist[0].name}</div>
                 </div>
+                <AddArtist id={user.userId} artist={album.artist[0].name}/>
             </div>
             <div>
                 {tracks.map((track) => {
