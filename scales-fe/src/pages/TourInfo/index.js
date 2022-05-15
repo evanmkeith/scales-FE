@@ -23,7 +23,22 @@ export default function TourInfo() {
 
     return (
         <>
-            <h1>TourInfo</h1>
+            <h1>Tour Dates for {keyWords}</h1>
+            <div>
+                {events.map((event) => {
+                    return (
+                        <div>
+                            <img src={event.images[5].url}/>
+                            <div>
+                                <a href={event.url} target="_blank">{event.name}</a>
+                                <p>Location: {event._embedded.venues[0].city.name} ({event.dates.timezone})</p>
+                                <p>Date: {event.dates.start.localDate}</p>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+
         </>
     )
 }

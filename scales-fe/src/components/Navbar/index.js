@@ -31,11 +31,6 @@ export default function NavBar(props) {
                     >
                         Playlist
                     </NavLink>
-                    <NavLink
-                        to='/touring_info'
-                    >
-                        Touring Info
-                    </NavLink>
                     <NavLink 
                         to="/"
                         onClick={handleLogout}
