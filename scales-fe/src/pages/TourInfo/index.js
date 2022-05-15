@@ -15,8 +15,6 @@ export default function TourInfo() {
         });
     };
 
-    console.log(events);
-
     useEffect(() => {
         getTourDates();
     }, []);
