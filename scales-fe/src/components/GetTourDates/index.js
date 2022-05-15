@@ -1,4 +1,4 @@
-import * as ticketmaster from '../../api/ticektMaster.service';
+import * as ticketmaster from '../../api/ticketMaster.service';
 
 export default function GetTourDates({ getTourDates, keyWords}) {
 

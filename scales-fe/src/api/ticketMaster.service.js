@@ -5,5 +5,5 @@ const getTourInfo = (keyWords) => {
 }
 
 export {
-
+    getTourInfo
 }
