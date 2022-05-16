@@ -26,17 +26,25 @@ export default function Search() {
 
     return (
         <>
-            <h1>Search</h1>
-            <form>
-                <input type='text' name='search' placeholder='search' value={search} onChange={e => setSearch(e.target.value)}/> 
-                <button onClick={handleSearchSubmit}>Search</button>
-            </form>
-            <div>
-                {albums.map((album) => {
-                    return (
-                        <SearchResults album={album} key={album.id} viewAlbum={viewAlbum}/> 
-                    )
-                })}
+
+            <div id='search-div'>
+                <form>
+                    <input type='text' name='search' placeholder='search' value={search} onChange={e => setSearch(e.target.value)}/> 
+                    <button id='search'
+                        onClick={handleSearchSubmit}
+                        >
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </button>
+                </form>
+                <div id='search-results'>
+                    {albums.map((album) => {
+                        return (
+                            <SearchResults album={album} key={album.id} viewAlbum={viewAlbum}/> 
+                        )
+                    })}
+                </div>
             </div>
         </>
     )

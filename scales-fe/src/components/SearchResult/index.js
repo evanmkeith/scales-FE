@@ -7,12 +7,13 @@ export default function PlaylistTrack({ album, viewAlbum }) {
     return (
         <>
             <div
+                class='search-result'
                 onClick={handleView}
             > 
                 <img src={album.img.url} /> 
                 <div>
-                    <div>{album.name}</div>
-                    <div>{album.artist[0].name}</div>
+                    <p>{album.name}</p>
+                    <pre>By: {album.artist[0].name}</pre>
                 </div>
             </div> 
         </>

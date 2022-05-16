@@ -103,7 +103,10 @@ img {
 .nav {
     display: flex;
     justify-content: space-between;
-    position: sticky;
+    position: -webkit-sticky;
+    position: sticky; 
+    top: 0px;
+    align-self: flex-start;
     margin-bottom: 4vh;
 }
 
@@ -233,4 +236,53 @@ pre {
 
 #tracks {
     width: 70%;
+}
+
+/* Search page */
+
+#search-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#search-div form {
+    display: flex;
+}
+
+#search-div input {
+    border-radius: 5px;
+}
+
+#search {
+    border: none;
+}
+
+.search-result {
+    display: flex;
+    margin: 10px;
+}
+
+.search-result:hover {
+    cursor: pointer;
+}
+
+.search-result img {
+    width: 50px;
+    height: 50px;
+}
+
+.search-result div p {
+    margin-top: 5px; 
+    margin-bottom: 0px; 
+}
+
+.search-result div  {
+    margin-left: 5px; 
+}
+
+#search-results {
+    padding-left: 7vw;
+    
 }
