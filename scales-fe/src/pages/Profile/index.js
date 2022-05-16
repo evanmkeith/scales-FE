@@ -93,7 +93,9 @@ export default function Profile() {
                                 }) }
                             </ul>
                         </div>
-                    <button onClick={editProfile}>Edit</button>
+                    <button onClick={editProfile} id="edit-profile">
+                        edit profile
+                    </button>
                 </div>
             </> 
         )
