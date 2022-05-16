@@ -7,13 +7,18 @@ export default function Player({ accessToken, trackUri }) {
     useEffect(() => setPlay(true), [trackUri]);
 
     if (!accessToken) return null 
-    return <SpotifyPlayer 
-        token={accessToken}
-        showSaveIcon
-        callback={state => {
-            if(!state.isPlaying) setPlay(false)
-        }}
-        play={play}
-        uris={trackUri ? [trackUri] : []}
-    />
+    return (
+            <SpotifyPlayer 
+                token={accessToken}
+                showSaveIcon
+                callback={state => {
+                    if(!state.isPlaying) setPlay(false)
+                }}
+                play={play}
+                uris={trackUri ? [trackUri] : []}
+                styles={{
+                    bgColor: 'rgba(0,0,0,0)',
+                }}
+            />
+    )
 }

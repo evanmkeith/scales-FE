@@ -153,3 +153,17 @@ pre {
 #edit-profile {
     margin: 10px;
 }
+
+/* Playlist */
+
+#player {
+    position: -webkit-sticky;
+    position: sticky; 
+    top: 50px;
+    align-self: flex-start;
+}
+
+#playlist {
+    display: flex;
+    justify-content: space-between;
+}

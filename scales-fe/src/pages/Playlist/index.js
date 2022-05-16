@@ -61,24 +61,26 @@ export default function Playlist() {
 
     return (
         <> 
-            <h1>Playlist</h1>
-
-            {tracks.map((track) => {
-                return (
-                    <div>
-                        <PlaylistTrack 
-                            track={track}
-                            key={track.uri}
-                            playTrack={playTrack}
-                            removeTrack={removeTrack}
-                        />
-                        <AddArtist artist={track.artist} id={user.userId}/>
-                    </div>
-                )
-            })}
-
-            <div>
-                <Player accessToken={user.accessToken} trackUri={trackToPlay?.uri}/> 
+            <h3>Scales App Playlist</h3>
+            <div id="playlist">
+                <div>
+                {tracks.map((track) => {
+                    return (
+                        <div>
+                            <PlaylistTrack 
+                                track={track}
+                                key={track.uri}
+                                playTrack={playTrack}
+                                removeTrack={removeTrack}
+                            />
+                            <AddArtist artist={track.artist} id={user.userId}/>
+                        </div>
+                    )
+                })}
+                </div>
+                <div id='player'>
+                    <Player accessToken={user.accessToken} trackUri={trackToPlay?.uri}/> 
+                </div>
             </div>
         </>
     );
