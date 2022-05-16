@@ -8,7 +8,9 @@ export default function PlaylistTrack({ artistId, id, idx, removeArtist}) {
 
     return (
         <>
-            <button onClick={handleRemove}>Remove</button>
+            <button onClick={handleRemove} class='remove-artist'>
+                x
+            </button>
         </>
     )   
 };

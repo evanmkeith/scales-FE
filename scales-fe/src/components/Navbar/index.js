@@ -15,27 +15,27 @@ export default function NavBar(props) {
     if(user){
         return(
             <>
-                <div> 
+                <div class="nav"> 
                     <NavLink
                         to='/profile'
                     >
-                        Profile
-                    </NavLink>
-                    <NavLink
-                        to='/search'
-                    >
-                        Search
+                        profile
                     </NavLink>
                     <NavLink
                         to='/playlist'
                     >
-                        Playlist
+                        playlist
+                    </NavLink>
+                    <NavLink
+                        to='/search'
+                    >
+                        search
                     </NavLink>
                     <NavLink 
                         to="/"
                         onClick={handleLogout}
                     >                   
-                    Logout    
+                        logout
                     </NavLink>
                 </div>
             </>
@@ -43,7 +43,9 @@ export default function NavBar(props) {
     } else {
         return(
             <>
+                <div class="nav">
                 <Login user={props.user} setUser={props.setUser}/>
+                </div>
             </>
         )
     };

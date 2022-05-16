@@ -69,28 +69,32 @@ export default function Profile() {
     if(!edit){
         return (
             <>
-                <div> 
-                    <img src={userProfile.img} />
-                </div> 
-                <p>{userProfile.name}</p>
-                <div>
-                    <p>Artists I want to see live</p>
-                        <ul>
-                            { userProfile.artists.length < 1 ? (<p>You haven't added any artists that you want to see live</p>): userProfile.artists.map((artist, idx) => {
-                                return (
-                            <li key={artist._id}>
-                                {artist.artist}
-                                <span>
-                                    <RemoveArtist artistId={artist._id} id={user.userId} idx={idx} removeArtist={removeArtist}/>
-                                </span>
-                                <span>
-                                    <GetTourDates keyWords={artist.artist} getTourDates={getTourDates} />
-                                </span>
-                            </li>)
-                            }) }
-                        </ul>
-                    </div>
-                <button onClick={editProfile}>Edit</button>
+                <div id="profile">
+                    <div class="profile-img"> 
+                        <img id="profile-img" src={userProfile.img} />
+                    </div> 
+                    <h3>Welcome, {userProfile.name}</h3>
+                    <div id="artists-to-see-live">
+                        <p>Artists I want to see live:</p>
+                            <ul>
+                                { userProfile.artists.length < 1 ? (<p>You haven't add any artists.</p>): userProfile.artists.map((artist, idx) => {
+                                    return (
+                                <li key={artist._id}>
+                                    <pre>
+                                    {artist.artist} 
+                                    <span>
+                                        <RemoveArtist artistId={artist._id} id={user.userId} idx={idx} removeArtist={removeArtist}/>
+                                    </span> 
+                                    </pre>
+                                    <span>
+                                        <GetTourDates keyWords={artist.artist} getTourDates={getTourDates} />
+                                    </span>
+                                </li>)
+                                }) }
+                            </ul>
+                        </div>
+                    <button onClick={editProfile}>Edit</button>
+                </div>
             </> 
         )
     } else {

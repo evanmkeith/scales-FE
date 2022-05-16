@@ -1,4 +1,3 @@
-import * as ticketmaster from '../../api/ticketMaster.service';
 
 export default function GetTourDates({ getTourDates, keyWords}) {
 
@@ -9,7 +8,9 @@ export default function GetTourDates({ getTourDates, keyWords}) {
 
     return (
         <>
-            <button onClick={handleTours}>Check Tour Dates</button>
+            <button onClick={handleTours}>
+                check tour info
+            </button>
         </>
     )   
 };

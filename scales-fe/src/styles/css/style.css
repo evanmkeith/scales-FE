@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Raleway+Dots&display=swap');
+
+
+/* Base Setup */
+
+:root {
+    --background-orange: rgb(240, 176, 57);
+    --background-red: rgb(226, 91, 91);
+    --background-yellow: rgb(202, 202, 41);
+    --text: black;
+}
+
+html {
+    background-image: 
+        radial-gradient(circle at bottom left, var(--background-orange), var(--background-red), var(--background-yellow), var(--background-orange), var(--background-red));
+    background-size: 400%;
+    animation: backGround-animation 60s infinite alternate;
+    height: 100%;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@keyframes backGround-animation {
+    0% {
+        background-position: top right;
+    }
+    100% {
+        background-position: bottom left;
+    }
+}
+
+#root { 
+    width: 100%;
+}
+
+body {
+    width: 70vw;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text);
+}
+
+p, span, li{
+    font-family: 'Raleway', sans-serif;
+    color: var(--text);
+}
+
+a {
+    font-family: 'Raleway Dots', cursive;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px dotted rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    padding: 3px;
+}
+
+a:hover {
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+}
+
+li {
+    list-style: square;
+}
+
+button {
+    background-color: rgba(0,0,0, 0);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    border: 2px solid black;
+    border-top: 1px solid rgba(0,0,0, 0);
+    border-bottom: 1px solid rgba(0,0,0, 0);
+    border-radius: 10px;
+}
+
+button:hover {
+    border-top: 1px solid black; 
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+img {
+    border-radius: 50%;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+/* Nav bar */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    margin-bottom: 4vh;
+}
+
+/* Profile Page */
+#profile-img {
+    border-radius: 50%;
+
+    width: 20vh;
+} 
+
+.profile-img {
+    display: flex;
+    justify-content: center;
+}
+
+#profile {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.remove-artist {
+    border-style: none;
+}
+
+.remove-artist:hover {
+    border-style: none;
+}
+
+#artists-to-see-live {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+pre { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
