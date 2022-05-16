@@ -43,28 +43,28 @@ export default function Listen() {
 
     return (
         <>
-            <div> 
-                <img src={album.img.url} /> 
-                <div>
-                    <div>{album.name}</div>
-                    <div>{album.artist[0].name}</div>
+            <div id='listen-div'>
+                <div id='listen-album'> 
+                    <img src={album.img.url} /> 
+                    <p>{album.name}</p>
+                    <p>by: {album.artist[0].name}</p>
+                    <AddArtist id={user.userId} artist={album.artist[0].name}/>
                 </div>
-                <AddArtist id={user.userId} artist={album.artist[0].name}/>
-            </div>
-            <div>
-                {tracks.map((track) => {
-                    return (
-                        <AlbumTrack 
-                            key={track.uri} 
-                            track={track} 
-                            addTrack={addTrack} 
-                            playTrack={playTrack}
-                        /> 
-                    )
-                })}
-            </div>
-            <div>
-                <Player accessToken={user.accessToken} trackUri={trackToPlay?.uri}/>
+                <div id='listen-tracks'>
+                        {tracks.map((track) => {
+                            return (
+                                <AlbumTrack 
+                                    key={track.uri} 
+                                    track={track} 
+                                    addTrack={addTrack} 
+                                    playTrack={playTrack}
+                                /> 
+                            )
+                        })}
+                </div>
+                <div id='listen-player'>
+                    <Player accessToken={user.accessToken} trackUri={trackToPlay?.uri}/>
+                </div>
             </div>
         </>
     )

@@ -12,15 +12,20 @@ export default function PlaylistTrack({ track, playTrack, addTrack }) {
 
     return (
         <>
-        <div
-            onClick={handlePlay}
-        > 
-            <div>
-                <h4>{track.title}</h4>
+        
+        <div> 
+            <div id="listen-track">
+                <button onClick={add}> 
+                    +
+                </button>
+                <h5>{track.title}</h5>
+                <span 
+                class="material-symbols-outlined"
+                onClick={handlePlay}
+                >
+                    play_circle
+                </span>
             </div>
-        </div>
-        <div onClick={add}> 
-            Add
         </div>
         </>
     )
