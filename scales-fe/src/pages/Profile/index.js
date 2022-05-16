@@ -102,18 +102,29 @@ export default function Profile() {
     } else {
         return (
             <>
-                <form>
-                    <label>
-                        Image
-                    <input onChange={e => setImage(e.target.value)} value={image} placeholder={userProfile.img}/>
-                    </label>
-                    <label>
-                        Name
-                    <input onChange={e => setName(e.target.value)} value={name} placeholder={userProfile.name}/>
-                    </label>
-                    <button onClick={updateProfile}>Submit</button>
-                </form>
-                <button onClick={destroy}>Destroy</button>
+                <div id="edit-profile">
+                    <form>
+                        <label>
+                            <span>Image</span>
+                        </label>
+                        <input onChange={e => setImage(e.target.value)} value={image} placeholder={userProfile.img}/>
+                        
+                        <label>
+                            <span>Name</span>
+                        </label>
+                        <input onChange={e => setName(e.target.value)} value={name} placeholder={userProfile.name}/>
+                    </form>
+                    <div id='edit-profile-btns-div'>
+                    <button 
+                            onClick={destroy}
+                        >
+                            Delete Account
+                        </button>
+                        <button onClick={updateProfile}>
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </> 
         )
     }

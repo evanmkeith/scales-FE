@@ -284,5 +284,31 @@ pre {
 
 #search-results {
     padding-left: 7vw;
-    
+}
+
+/* Edit Profile Page */
+
+#edit-profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-profile form {
+    display: flex;
+    flex-direction: column;
+    width: 60%; 
+}
+
+#edit-profile form input{
+    border-radius: 5px;
+    margin-bottom: 2vh;
+}
+
+#edit-profile-btns-div {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding-top: 3vw; 
 }
