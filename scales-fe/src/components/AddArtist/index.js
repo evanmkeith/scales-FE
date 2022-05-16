@@ -9,7 +9,13 @@ export default function PlaylistTrack({ artist, id }) {
 
     return (
         <>
-            <button onClick={handleAdd}>Add</button>
+            <div class="add-artist">
+                <button onClick={handleAdd}>
+                    <span class="material-symbols-outlined">
+                        person_add
+                    </span>
+                </button>
+            </div>
         </>
     )   
 };

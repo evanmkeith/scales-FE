@@ -12,18 +12,26 @@ export default function PlaylistTrack({ track, playTrack, removeTrack }) {
 
     return (
         <>
-        <div
-            onClick={handlePlay}
-        > 
-            <img src={track.albumUrl} /> 
-            <div>
-                <div>{track.title}</div>
-                <div>{track.artist}</div>
+            <div class='track'>
+                <button class="remove-track" onClick={remove}> 
+                    x
+                </button>
+                <div
+                    class='track-div'
+                    onClick={handlePlay}
+                > 
+                    <span class="track-info">
+                        <img 
+                            class='track-img' 
+                            src={track.albumUrl} 
+                        /> 
+                        <span>
+                            <p>{track.title}</p>
+                            <pre>{track.artist}</pre>
+                        </span>
+                    </span>
+                </div>
             </div>
-        </div>
-        <div onClick={remove}> 
-            Remove
-        </div>
         </>
     )
 };

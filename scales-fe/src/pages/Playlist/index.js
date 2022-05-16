@@ -63,10 +63,10 @@ export default function Playlist() {
         <> 
             <h3>Scales App Playlist</h3>
             <div id="playlist">
-                <div>
+                <div id='tracks'>
                 {tracks.map((track) => {
                     return (
-                        <div>
+                        <div class='track'>
                             <PlaylistTrack 
                                 track={track}
                                 key={track.uri}
