@@ -21,16 +21,16 @@ export default function TourInfo() {
 
     return (
         <>
-            <h1>Tour Dates for {keyWords}</h1>
+            <h3>Tour Dates for {keyWords}</h3>
             <div>
                 {events.map((event) => {
                     return (
-                        <div>
+                        <div className="event">
                             <img src={event.images[5].url}/>
-                            <div>
+                            <div className="event-info">
                                 <a href={event.url} target="_blank">{event.name}</a>
-                                <p>Location: {event._embedded.venues[0].city.name} ({event.dates.timezone})</p>
-                                <p>Date: {event.dates.start.localDate}</p>
+                                <p>Where: {event._embedded.venues[0].city.name} ({event.dates.timezone})</p>
+                                <p>When: {event.dates.start.localDate}</p>
                             </div>
                         </div>
                     )
