@@ -113,7 +113,6 @@ img {
 /* Profile Page */
 #profile-img {
     border-radius: 50%;
-
     width: 20vh;
 } 
 
@@ -364,4 +363,36 @@ pre {
 
 #listen-track span:hover {
     cursor: pointer;
+}
+
+/* Landing */
+#landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+
+#landing div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+}
+
+#landing div img {
+    width: 80%;
+}
+
+#landing div span {
+    text-align: center;
+    position: relative;
+    top: -170px; 
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    top: 70vh;
 }

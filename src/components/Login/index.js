@@ -39,9 +39,9 @@ export default function Login(props) {
     }, []);
     
     return (
-        <div id='login'>
+        <>
             <button onClick={requestAuth}>Login with Spotify</button>
-        </div>
+        </>
     );
 
 }

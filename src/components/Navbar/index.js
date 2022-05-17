@@ -43,8 +43,8 @@ export default function NavBar(props) {
     } else {
         return(
             <>
-                <div class="nav">
-                <Login user={props.user} setUser={props.setUser}/>
+                <div class="nav login">
+                    <Login user={props.user} setUser={props.setUser}/>
                 </div>
             </>
         )
