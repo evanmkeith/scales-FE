@@ -388,7 +388,19 @@ pre {
 #landing div span {
     text-align: center;
     position: relative;
-    top: -170px; 
+    top: -200px; 
+}
+
+@media screen and (max-width: 600px) {
+    #landing div span {
+        top: -50px; 
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #landing div span {
+        top: -50px; 
+    }
 }
 
 .login {
