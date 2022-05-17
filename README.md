@@ -3,7 +3,7 @@
 Back-end [here](https://github.com/evanmkeith/scales-backEnd). 
 
 ## Concept:
-A web applcation that encourages users to listen to artists full albums and create custom playlists as well as informs them of when they're favorite artists are on tour.
+A web applcation that encourages users to listen to artists full albums and create custom playlists as well as informs them of when they're favorite artists are on tour. This app utilizes the Spotify API SSO to create and listen on behalf of the users account. 
 
 ## Site Pages: 
 Login Page:
